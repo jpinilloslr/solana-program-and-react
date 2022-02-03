@@ -6,9 +6,7 @@ declare_id!("FExTrBmUdTxQuv6yNqrASZq9TL5bKKx4UfrDM1vHij3C");
 pub mod myepicproject {
   use super::*;
   pub fn start_stuff_off(ctx: Context<StartStuffOff>) -> ProgramResult {
-    // Get a reference to the account.
     let base_account = &mut ctx.accounts.base_account;
-    // Initialize total_gifs.
     base_account.total_gifs = 0;
     Ok(())
   }
@@ -17,20 +15,17 @@ pub mod myepicproject {
     let base_account = &mut ctx.accounts.base_account;
     let user = &mut ctx.accounts.user;
 
-	// Build the struct.
     let item = ItemStruct {
       gif_link: gif_link.to_string(),
       user_address: *user.to_account_info().key,
     };
 		
-	// Add it to the gif_list vector.
     base_account.gif_list.push(item);
     base_account.total_gifs += 1;
     Ok(())
   }
 }
 
-// Attach certain variables to the StartStuffOff context.
 #[derive(Accounts)]
 pub struct StartStuffOff<'info> {
   #[account(init, payer = user, space = 9000)]
