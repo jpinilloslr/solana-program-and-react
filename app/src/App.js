@@ -1,4 +1,3 @@
-import twitterLogo from './assets/twitter-logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import idl from './idl.json';
@@ -15,10 +14,6 @@ const network = clusterApiUrl('devnet');
 const opts = {
   preflightCommitment: 'processed',
 };
-
-// Constants
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -159,6 +154,7 @@ const App = () => {
             {gifList.map((item, index) => (
               <div className="gif-item" key={index}>
                 <img src={item.gifLink} />
+                <div className='user-address'>{item.userAddress.toString()}</div>
               </div>
             ))}
           </div>
@@ -209,15 +205,7 @@ const App = () => {
           {!walletAddress && renderNotConnectedContainer()}
           {walletAddress && renderConnectedContainer()}
         </div>
-        <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
-          <a
-            className="footer-text"
-            href={TWITTER_LINK}
-            target="_blank"
-            rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
-        </div>
+        
       </div>
     </div>
   );

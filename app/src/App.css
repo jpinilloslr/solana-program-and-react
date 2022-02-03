@@ -111,6 +111,16 @@
   object-fit: cover;
 }
 
+.gif-item .user-address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: .3rem;
+  background-color: white;
+  padding: .5rem;
+  border-radius: 10px;
+}
+
 .connected-container input[type='text'] {
   display: inline-block;
   color: white;
